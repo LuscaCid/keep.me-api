@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { FastifyInstanceZod } from "../@types/FastifyInstanceZod";
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
+import { FastifyInstanceZod } from "../../@types/FastifyInstanceZod";
 interface User {
     name : string;
     email : string;
