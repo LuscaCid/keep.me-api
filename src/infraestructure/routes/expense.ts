@@ -8,7 +8,7 @@ export async function expenseRoutes (app : FastifyInstanceZod) {
                 "/all", 
                 { 
                     schema : {
-                        tags : ["receipts"],
+                        tags : ["expenses"],
                         response : {
                             200 : z.array(
                                 z.object({
@@ -21,6 +21,21 @@ export async function expenseRoutes (app : FastifyInstanceZod) {
                 }, 
                 async (req, reply) => {
 
+                }
+            );
+            instance.post(
+                "/create",
+                { 
+                    schema : {
+                        tags : ["expenses"],
+                        body : z.object({
+                            value : z.number().min(0.1,  "At least 0.1 cents to add an expense"),
+                            category : z.string(),
+                        })
+                    }
+                },
+                async (req, reply) => {
+                    const { body : { category, value } } = req; 
                 }
             );
             done();

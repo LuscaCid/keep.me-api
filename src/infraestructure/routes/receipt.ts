@@ -33,18 +33,5 @@ export async function receiptRoutes (app : FastifyInstanceZod) {
         
     }, { prefix : "/receipt" });
 
-    app.post(
-        "/expenses/create",
-        { 
-            schema : {
-                body : z.object({
-                    value : z.number().min(0.1,  "At least 0.1 cents to add an expense"),
-                    category : z.string(),
-                })
-            }
-        },
-        async (req, reply) => {
-            const { body : { category, value } } = req; 
-        }
-    );
+
 } 
